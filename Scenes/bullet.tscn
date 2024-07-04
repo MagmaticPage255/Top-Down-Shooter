@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8fr6la05cvs3"]
+
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_siwmu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m2lm2"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_siwmu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_m2lm2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
