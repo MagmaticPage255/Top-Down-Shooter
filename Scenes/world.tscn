@@ -6,3 +6,6 @@
 
 [node name="Player" parent="." instance=ExtResource("1_j1deh")]
 position = Vector2(461, 123)
+SPEED = null
+ACCELERATION = null
+FRICTION = null

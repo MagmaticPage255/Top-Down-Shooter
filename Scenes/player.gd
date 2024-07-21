@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var ACCELERATION = 20.0
 @export var FRICTION = 10.0
+const bullet = preload("res://Scenes/bullet.tscn")
+@onready var world = get_node('/root/World')
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 func _physics_process(delta):
@@ -21,3 +23,7 @@ func _process(delta):
 	rotation_degrees += 90
 
 	move_and_slide()
+
+func fire():
+	var bullet = bullet_scene.instance()
+	bullet.drection = 

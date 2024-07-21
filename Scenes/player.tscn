@@ -43,6 +43,9 @@ radius = 44.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_falvs")
+SPEED = null
+ACCELERATION = null
+FRICTION = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

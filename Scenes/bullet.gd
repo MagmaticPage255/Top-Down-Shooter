@@ -4,4 +4,6 @@ extends Area2D
 
 func _physics_process(delta):
 	var velocity = Vector2(speed, 0).rotated(rotation)
-	move_and_collide()
+	
+	# Calculate movement
+	position += velocity * delta  # Update position directly
