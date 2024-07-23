@@ -18,12 +18,19 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 
+func fire():
+	var bullet = bullet.instantiate()
+	bullet.direction = $Marker2D.global_position - global_position
+	bullet.global_position = $Marker2D.global_position
+	get_tree().get_root().add_child(bullet)
+
+
+
 func _process(delta):
 	look_at(get_global_mouse_position())
 	rotation_degrees += 90
+	
+	if Input.is_action_just_pressed("shoot"):
+		fire()
 
 	move_and_slide()
-
-func fire():
-	var bullet = bullet_scene.instance()
-	bullet.drection = 

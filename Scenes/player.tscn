@@ -43,9 +43,6 @@ radius = 44.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_falvs")
-SPEED = null
-ACCELERATION = null
-FRICTION = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -55,3 +52,6 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 9)
 shape = SubResource("CircleShape2D_n2heo")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(19, -46)
