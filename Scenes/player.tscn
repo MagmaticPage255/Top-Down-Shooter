@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bblwvh85j4v0o"]
+[gd_scene load_steps=13 format=3 uid="uid://bblwvh85j4v0o"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_falvs"]
 [ext_resource type="Texture2D" uid="uid://1qfl0xnnciia" path="res://Player/RRT Guy.png" id="2_82pix"]
 [ext_resource type="Texture2D" uid="uid://dinr3towqc8f" path="res://Player/RRT Guy Walk.png" id="3_uvceb"]
 [ext_resource type="Texture2D" uid="uid://re61426di5ik" path="res://Other Assests/MUZZLE FLASH.png" id="4_7jv1c"]
+[ext_resource type="AudioStream" uid="uid://iwwwdu5hqcnd" path="res://SFX/481582__malatestiniccom__gun-4.wav" id="5_niumo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ceb0m"]
 atlas = ExtResource("2_82pix")
@@ -71,8 +72,46 @@ position = Vector2(19, -30)
 shape = SubResource("RectangleShape2D_wsc5x")
 
 [node name="MuzzleFlash" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(20, -66)
 scale = Vector2(0.0322266, 0.0419922)
 texture = ExtResource("4_7jv1c")
 
 [node name="Timer" type="Timer" parent="MuzzleFlash"]
+wait_time = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DeathScreen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeathScreen"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathScreen"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathScreen/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="CanvasLayer/DeathScreen/Panel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_niumo")
+
+[connection signal="timeout" from="MuzzleFlash/Timer" to="MuzzleFlash" method="hide"]
