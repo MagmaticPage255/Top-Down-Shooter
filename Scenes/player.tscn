@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bblwvh85j4v0o"]
+[gd_scene load_steps=12 format=3 uid="uid://bblwvh85j4v0o"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_falvs"]
 [ext_resource type="Texture2D" uid="uid://1qfl0xnnciia" path="res://Player/RRT Guy.png" id="2_82pix"]
 [ext_resource type="Texture2D" uid="uid://dinr3towqc8f" path="res://Player/RRT Guy Walk.png" id="3_uvceb"]
+[ext_resource type="Texture2D" uid="uid://re61426di5ik" path="res://Other Assests/MUZZLE FLASH.png" id="4_7jv1c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ceb0m"]
 atlas = ExtResource("2_82pix")
@@ -41,6 +42,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2heo"]
 radius = 44.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plfsa"]
+size = Vector2(2, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsc5x"]
+size = Vector2(13, 29)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_falvs")
 
@@ -49,9 +56,23 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_xj7d1")
 animation = &"Idle"
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 9)
 shape = SubResource("CircleShape2D_n2heo")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(19, -46)
+[node name="CollisionShape2D-BULLET" type="CollisionShape2D" parent="."]
+position = Vector2(19, -133)
+shape = SubResource("RectangleShape2D_plfsa")
+
+[node name="CollisionShape2D-GUN" type="CollisionShape2D" parent="."]
+position = Vector2(19, -30)
+shape = SubResource("RectangleShape2D_wsc5x")
+
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
+position = Vector2(20, -66)
+scale = Vector2(0.0322266, 0.0419922)
+texture = ExtResource("4_7jv1c")
+
+[node name="Timer" type="Timer" parent="MuzzleFlash"]

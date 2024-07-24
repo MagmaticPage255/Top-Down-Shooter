@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkgiojs27b203"
-path="res://.godot/imported/Bullet.png-638f48d3d50ae6e51c7750c66dafa9c0.ctex"
+uid="uid://re61426di5ik"
+path="res://.godot/imported/MUZZLE FLASH.png-0f824e700641d06d34791c282213daa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Other Assests/Bullet.png"
-dest_files=["res://.godot/imported/Bullet.png-638f48d3d50ae6e51c7750c66dafa9c0.ctex"]
+source_file="res://Other Assests/MUZZLE FLASH.png"
+dest_files=["res://.godot/imported/MUZZLE FLASH.png-0f824e700641d06d34791c282213daa9.ctex"]
 
 [params]
 
