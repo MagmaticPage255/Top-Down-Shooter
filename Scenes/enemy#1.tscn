@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1mpnx5iebu7s"]
+
+[ext_resource type="Script" path="res://Enemy#1.gd" id="1_ljnpq"]
+[ext_resource type="Texture2D" uid="uid://cp2kab1gj0l4o" path="res://Enemy/Insurgent 3 Walk.png" id="2_r15is"]
+[ext_resource type="AudioStream" uid="uid://r2vjmdw3h2wt" path="res://SFX/718175__tb0y298__shotgun-fire-1.wav" id="3_qmyoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75y2j"]
+atlas = ExtResource("2_r15is")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6iah"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75y2j")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_coxev"]
+radius = 44.0
+
+[node name="Enemy#1" type="CharacterBody2D"]
+script = ExtResource("1_ljnpq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_p6iah")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 8)
+shape = SubResource("CircleShape2D_coxev")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qmyoc")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
