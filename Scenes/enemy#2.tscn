@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b10g83pf6njww"]
+
+[ext_resource type="Script" path="res://Scenes/enemy#2.gd" id="1_dw7pc"]
+[ext_resource type="Texture2D" uid="uid://domj5f20lnw7m" path="res://Enemy/Insurgent 2 Walk.png" id="1_i1uac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c0yj"]
+atlas = ExtResource("1_i1uac")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfllf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c0yj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02b44"]
+radius = 46.0
+
+[node name="enemy#2" type="CharacterBody2D"]
+script = ExtResource("1_dw7pc")
+SPEED = 300.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_nfllf")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 8)
+shape = SubResource("CircleShape2D_02b44")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
