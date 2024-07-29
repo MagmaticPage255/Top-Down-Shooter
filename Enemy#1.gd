@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var FRICTION = 10.0
 @onready var sprite = $AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
+@export var health = 10
 
 
 func _physics_process(delta):
@@ -20,3 +21,5 @@ func _physics_process(delta):
 	
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player:
 		player.kill()
+
+func enemy_die():

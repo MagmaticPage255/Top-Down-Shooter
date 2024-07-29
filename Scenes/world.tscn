@@ -11,6 +11,10 @@ position = Vector2(287, 114)
 
 [node name="Enemy#1" parent="." instance=ExtResource("2_t6lmt")]
 position = Vector2(109, 52)
+SPEED = null
+ACCELERATION = null
+FRICTION = null
+health = null
 
 [node name="enemy#2" parent="." instance=ExtResource("3_yk0ga")]
 position = Vector2(164, 167)
