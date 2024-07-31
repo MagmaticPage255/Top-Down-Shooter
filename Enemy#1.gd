@@ -23,3 +23,4 @@ func _physics_process(delta):
 		player.kill()
 
 func enemy_die():
+	pass

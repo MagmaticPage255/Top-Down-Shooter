@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var ACCELERATION = 20.0
 @export var FRICTION = 10.0
 
+var player_health = 10
+
 
 
 func _process(delta):

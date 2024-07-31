@@ -26,10 +26,6 @@ radius = 44.0
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ljnpq")
-SPEED = null
-ACCELERATION = null
-FRICTION = null
-health = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
