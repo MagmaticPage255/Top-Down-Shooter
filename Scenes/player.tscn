@@ -55,9 +55,11 @@ sprite_frames = SubResource("SpriteFrames_xj7d1")
 animation = &"Idle"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(19, -28)
+rotation = 3.14159
+target_position = Vector2(1.90735e-05, 205)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 9)
 shape = SubResource("CircleShape2D_n2heo")
 
 [node name="CollisionShape2D-BULLET" type="CollisionShape2D" parent="."]

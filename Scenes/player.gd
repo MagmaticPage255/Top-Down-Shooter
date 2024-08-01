@@ -7,14 +7,21 @@ extends CharacterBody2D
 @export var FRICTION = 10.0
 
 var player_health = 10
-
+var dead = false
 
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	if dead:
+		return
+
+
 
 func _physics_process(delta):
+	if dead:
+		return
+	
 	look_at(get_global_mouse_position())
 	rotation_degrees += 90
 
@@ -25,8 +32,18 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	move_and_slide()
 
+func kill():
+	if dead:
+		return
+	dead = true
+	z_index = -1
+
+
 func shoot():
+	if dead:
+		return
 	$MuzzleFlash.show()
 	$MuzzleFlash/Timer.start()
 	$ShootSound.play()
-
+	if ray_cast_2d.get_collider() and ray_cast_2d.get_collider().has_method("kill"):
+		ray_cast_2d.get_collider().kill()

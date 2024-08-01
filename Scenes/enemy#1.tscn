@@ -40,3 +40,6 @@ shape = SubResource("CircleShape2D_coxev")
 stream = ExtResource("3_qmyoc")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(22, -28)
+rotation = 3.14159
+target_position = Vector2(1.14441e-05, 116)
