@@ -43,11 +43,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2heo"]
 radius = 44.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_plfsa"]
-size = Vector2(2, 208)
+[sub_resource type="CircleShape2D" id="CircleShape2D_758hy"]
+radius = 88.0227
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_falvs")
+SPEED = null
+ACCELERATION = null
+FRICTION = null
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -60,12 +63,8 @@ rotation = 3.14159
 target_position = Vector2(1.90735e-05, 205)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 8)
 shape = SubResource("CircleShape2D_n2heo")
-
-[node name="CollisionShape2D-BULLET" type="CollisionShape2D" parent="."]
-position = Vector2(19, -118)
-shape = SubResource("RectangleShape2D_plfsa")
-disabled = true
 
 [node name="MuzzleFlash" type="Sprite2D" parent="."]
 visible = false
@@ -107,5 +106,11 @@ offset_bottom = 8.0
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_niumo")
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(-7, 8)
+shape = SubResource("CircleShape2D_758hy")
 
 [connection signal="timeout" from="MuzzleFlash/Timer" to="MuzzleFlash" method="hide"]

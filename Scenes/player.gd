@@ -36,6 +36,7 @@ func kill():
 	if dead:
 		return
 	dead = true
+	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 	z_index = -1
 
 
@@ -47,3 +48,6 @@ func shoot():
 	$ShootSound.play()
 	if ray_cast_2d.get_collider() and ray_cast_2d.get_collider().has_method("kill"):
 		ray_cast_2d.get_collider().kill()
+
+func _on_pickup_area_area_entered(area):
+	if area.is_in_group("Pickup"):

@@ -9,8 +9,11 @@ extends CharacterBody2D
 @onready var player = get_tree().get_first_node_in_group("player")
 @export var enemy_health = 10
 
+var dead = false
 
 func _physics_process(delta):
+	if dead:
+		return
 	var direction_to_player = global_position.direction_to(player.global_position)
 	velocity = direction_to_player * SPEED
 	
@@ -22,5 +25,8 @@ func _physics_process(delta):
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player:
 		player.kill()
 
-func enemy_die():
-	pass
+func take_damage(dmg):
+	health -= dmg
+	if health <= 0:
+	queue_free()
+	z_index = -1

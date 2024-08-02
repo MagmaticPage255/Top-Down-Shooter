@@ -8,9 +8,16 @@
 
 [node name="Player" parent="." instance=ExtResource("1_j1deh")]
 position = Vector2(287, 114)
+SPEED = null
+ACCELERATION = null
+FRICTION = null
 
 [node name="Enemy#1" parent="." instance=ExtResource("2_t6lmt")]
-position = Vector2(109, 52)
+position = Vector2(-310, -249)
+SPEED = null
+ACCELERATION = null
+FRICTION = null
+enemy_health = null
 
 [node name="enemy#2" parent="." instance=ExtResource("3_yk0ga")]
-position = Vector2(164, 167)
+position = Vector2(-367, 94)
