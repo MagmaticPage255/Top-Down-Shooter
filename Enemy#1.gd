@@ -26,7 +26,8 @@ func _physics_process(delta):
 		player.kill()
 
 func take_damage(dmg):
-	health -= dmg
-	if health <= 0:
-	queue_free()
+	enemy_health -= dmg
+	if enemy_health <= 0:
+		queue_free()
+		dead = true
 	z_index = -1

@@ -21,11 +21,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_02b44"]
 radius = 46.0
 
-[node name="enemy#2" type="CharacterBody2D"]
+[node name="enemy#2" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_dw7pc")
-SPEED = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1.19209e-07)

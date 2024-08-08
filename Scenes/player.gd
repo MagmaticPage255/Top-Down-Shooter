@@ -46,8 +46,14 @@ func shoot():
 	$MuzzleFlash.show()
 	$MuzzleFlash/Timer.start()
 	$ShootSound.play()
-	if ray_cast_2d.get_collider() and ray_cast_2d.get_collider().has_method("kill"):
-		ray_cast_2d.get_collider().kill()
+	if ray_cast_2d.get_collider() and ray_cast_2d.get_collider().has_method("take_damage"):
+		ray_cast_2d.get_collider().take_damage()
+
+
 
 func _on_pickup_area_area_entered(area):
 	if area.is_in_group("Pickup"):
+		if area.has_method("collect"):
+			area.collect()
+			
+			

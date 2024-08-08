@@ -48,9 +48,6 @@ radius = 88.0227
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_falvs")
-SPEED = null
-ACCELERATION = null
-FRICTION = null
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -114,3 +111,4 @@ position = Vector2(-7, 8)
 shape = SubResource("CircleShape2D_758hy")
 
 [connection signal="timeout" from="MuzzleFlash/Timer" to="MuzzleFlash" method="hide"]
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
