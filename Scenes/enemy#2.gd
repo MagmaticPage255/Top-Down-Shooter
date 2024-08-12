@@ -7,8 +7,9 @@ extends CharacterBody2D
 @export var FRICTION = 10.0
 @onready var sprite = $AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
-@export var enemy_health = 10
+@export var enemy_health = 1
 
+var dead = false
 
 func _physics_process(delta):
 	var direction_to_player = global_position.direction_to(player.global_position)

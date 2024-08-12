@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 
 @onready var ray_cast_2d = $RayCast2D
+@onready var enemy = "res://Scenes/enemy#1.tscn"
 @export var SPEED = 300.0
 @export var ACCELERATION = 20.0
 @export var FRICTION = 10.0
+@export var player_health = 10
+@export var dmg = 1
 
-var player_health = 10
 var dead = false
-
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -46,7 +47,7 @@ func shoot():
 	$MuzzleFlash.show()
 	$MuzzleFlash/Timer.start()
 	$ShootSound.play()
-	if ray_cast_2d.get_collider() and ray_cast_2d.get_collider().has_method("take_damage"):
+	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider().has_method("take_damage"):
 		ray_cast_2d.get_collider().take_damage()
 
 

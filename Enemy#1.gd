@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
 @export var enemy_health = 10
+@export var dmg = 1
 
 var dead = false
 
@@ -28,6 +29,6 @@ func _physics_process(delta):
 func take_damage(dmg):
 	enemy_health -= dmg
 	if enemy_health <= 0:
-		queue_free()
 		dead = true
+		queue_free()
 	z_index = -1
