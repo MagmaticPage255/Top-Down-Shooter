@@ -48,7 +48,7 @@ func shoot():
 	$MuzzleFlash/Timer.start()
 	$ShootSound.play()
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider().has_method("take_damage"):
-		ray_cast_2d.get_collider().take_damage()
+		ray_cast_2d.get_collider().take_damage(dmg)
 
 
 

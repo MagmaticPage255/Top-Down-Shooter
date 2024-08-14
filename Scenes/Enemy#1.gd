@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
 @export var enemy_health = 10
-@export var dmg = 1
+const EXPERIENCE_DOGTAG = preload("res://Scenes/xp_dogtag.tscn")
 
 var dead = false
 
@@ -31,4 +31,7 @@ func take_damage(dmg):
 	if enemy_health <= 0:
 		dead = true
 		queue_free()
+		var new_xp = EXPERIENCE_DOGTAG.instantiate()
+		new_xp.global_position = global_position
+		add_sibling(new_xp)
 	z_index = -1

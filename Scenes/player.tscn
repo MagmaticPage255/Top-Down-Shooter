@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bblwvh85j4v0o"]
+[gd_scene load_steps=16 format=3 uid="uid://bblwvh85j4v0o"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_falvs"]
 [ext_resource type="Texture2D" uid="uid://1qfl0xnnciia" path="res://Player/RRT Guy.png" id="2_82pix"]
@@ -46,6 +46,17 @@ radius = 44.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_758hy"]
 radius = 88.0227
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmdil"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alhxn"]
+bg_color = Color(0, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pn868"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edwqq"]
+bg_color = Color(0.6, 1, 0.196078, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_falvs")
 
@@ -57,7 +68,7 @@ animation = &"Idle"
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(19, -28)
 rotation = 3.14159
-target_position = Vector2(-0.000999451, 394)
+target_position = Vector2(-0.001, 1000)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -110,6 +121,38 @@ stream = ExtResource("5_niumo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(-7, 8)
 shape = SubResource("CircleShape2D_758hy")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Experience" type="ProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 1112.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_pmdil")
+theme_override_styles/fill = SubResource("StyleBoxFlat_alhxn")
+
+[node name="Health" type="ProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 581.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_pn868")
+theme_override_styles/fill = SubResource("StyleBoxFlat_edwqq")
 
 [connection signal="timeout" from="MuzzleFlash/Timer" to="MuzzleFlash" method="hide"]
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]

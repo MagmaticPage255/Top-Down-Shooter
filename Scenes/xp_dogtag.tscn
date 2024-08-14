@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cacv8nj7ellqr" path="res://Other Assests/dog tag item.png" id="2_1a167"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3iu6"]
-radius = 34.4819
+radius = 20.0
 
 [node name="XpDogtag" type="Area2D" groups=["Pickup"]]
 script = ExtResource("1_ei0tg")
@@ -13,7 +13,7 @@ script = ExtResource("1_ei0tg")
 shape = SubResource("CircleShape2D_d3iu6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_1a167")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
