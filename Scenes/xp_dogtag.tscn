@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bidypvi05kfsd"]
 
-[ext_resource type="Script" path="res://XpDogtag.gd" id="1_ei0tg"]
+[ext_resource type="Script" path="res://Scenes/XpDogtag.gd" id="1_ei0tg"]
 [ext_resource type="Texture2D" uid="uid://cacv8nj7ellqr" path="res://Other Assests/dog tag item.png" id="2_1a167"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3iu6"]

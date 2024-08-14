@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1mpnx5iebu7s"]
 
-[ext_resource type="Script" path="res://Enemy#1.gd" id="1_ljnpq"]
+[ext_resource type="Script" path="res://Scenes/Enemy#1.gd" id="1_ljnpq"]
 [ext_resource type="Texture2D" uid="uid://cp2kab1gj0l4o" path="res://Enemy/Insurgent 3 Walk.png" id="2_r15is"]
 [ext_resource type="AudioStream" uid="uid://r2vjmdw3h2wt" path="res://SFX/718175__tb0y298__shotgun-fire-1.wav" id="3_qmyoc"]
 

@@ -22,3 +22,10 @@ func _physics_process(delta):
 	
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player:
 		player.kill()
+
+func take_damage(dmg):
+	enemy_health -= dmg
+	if enemy_health <= 0:
+		dead = true
+		queue_free()
+	z_index = -1
