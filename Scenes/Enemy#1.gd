@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
 @export var enemy_health = 10
+@export var dmg = 1
 const EXPERIENCE_DOGTAG = preload("res://Scenes/xp_dogtag.tscn")
 
 var dead = false
@@ -24,7 +25,7 @@ func _physics_process(delta):
 	
 	
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player:
-		player.kill()
+		player.take_damage(dmg)
 
 func take_damage(dmg):
 	enemy_health -= dmg

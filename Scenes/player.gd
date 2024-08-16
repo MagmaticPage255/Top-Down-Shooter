@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var ACCELERATION = 20.0
 @export var FRICTION = 10.0
-@export var player_health = 10
+@export var player_health = 15
 @export var dmg = 1
 
 var dead = false
@@ -58,3 +58,10 @@ func _on_pickup_area_area_entered(area):
 			area.collect()
 			
 			
+
+func take_damage(dmg):
+	player_health -= dmg
+	if player_health <= 0:
+		dead = true
+		get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
+	z_index = -1

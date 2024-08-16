@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6p1in1mo5ukm"]
+[gd_scene load_steps=2 format=3 uid="uid://b6p1in1mo5ukm"]
 
 [ext_resource type="Script" path="res://Scenes/Menu.gd" id="1_m32gq"]
-[ext_resource type="Texture2D" uid="uid://dh5kytqnxxkww" path="res://Other Assests/STUPID ASS MENU BOTTONS.png" id="2_bfj78"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,7 +21,7 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-icon = ExtResource("2_bfj78")
+text = "PLAY"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
