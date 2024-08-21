@@ -42,3 +42,4 @@ shape = SubResource("CircleShape2D_02b44")
 position = Vector2(22.5, -44)
 rotation = 3.14159
 scale = Vector2(2, 2)
+target_position = Vector2(0, 450)

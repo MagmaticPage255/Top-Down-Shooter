@@ -3,13 +3,19 @@ extends CharacterBody2D
 
 @onready var ray_cast_2d = $RayCast2D
 @onready var enemy = "res://Scenes/enemy#1.tscn"
+@onready var healthBar = $UI/Control/Health
 @export var SPEED = 300.0
 @export var ACCELERATION = 20.0
 @export var FRICTION = 10.0
-@export var player_health = 15
-@export var dmg = 1
+@export var damage = 1
+
+var maxPlayerHealth = 25
+var health = 25
 
 var dead = false
+
+func _ready():
+	healthBar.set_health_bar(health, maxPlayerHealth)
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -48,8 +54,7 @@ func shoot():
 	$MuzzleFlash/Timer.start()
 	$ShootSound.play()
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider().has_method("take_damage"):
-		ray_cast_2d.get_collider().take_damage(dmg)
-
+		ray_cast_2d.get_collider().take_damage(damage)
 
 
 func _on_pickup_area_area_entered(area):
@@ -59,9 +64,10 @@ func _on_pickup_area_area_entered(area):
 			
 			
 
-func take_damage(dmg):
-	player_health -= dmg
-	if player_health <= 0:
-		dead = true
-		get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
+func take_damage(damage:int):
+	health -= damage
+	if health < 0: health = 0
+	healthBar.change_health(-damage)
+	dead = true
+	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 	z_index = -1
