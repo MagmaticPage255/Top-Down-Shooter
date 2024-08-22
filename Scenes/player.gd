@@ -64,10 +64,14 @@ func _on_pickup_area_area_entered(area):
 			
 			
 
-func take_damage(damage:int):
+func take_damage(damage):
 	health -= damage
-	if health < 0: health = 0
-	healthBar.change_health(-damage)
+	if health <= 0:
+		die()
+
+func die():
+	if dead:
+		return
 	dead = true
 	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 	z_index = -1

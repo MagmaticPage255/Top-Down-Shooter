@@ -45,13 +45,13 @@ position = Vector2(22, -28)
 rotation = 3.14159
 target_position = Vector2(0, 700)
 
-[node name="Damage_Timer" type="Timer" parent="."]
+[node name="damage_cooldown_time" type="Timer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(23, -66)
 scale = Vector2(0.034, 0.042)
 texture = ExtResource("4_6g4fx")
 
-[node name="Timer" type="Timer" parent="Sprite2D"]
+[node name="Timer" type="Timer" parent="MuzzleFlash"]
 wait_time = 0.1

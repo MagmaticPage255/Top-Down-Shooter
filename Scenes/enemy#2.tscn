@@ -43,3 +43,5 @@ position = Vector2(22.5, -44)
 rotation = 3.14159
 scale = Vector2(2, 2)
 target_position = Vector2(0, 450)
+
+[node name="damage_cooldown_time" type="Timer" parent="."]

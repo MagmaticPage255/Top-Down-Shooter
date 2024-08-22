@@ -11,6 +11,9 @@ extends CharacterBody2D
 @export var damage = 1
 const EXPERIENCE_DOGTAG = preload("res://Scenes/xp_dogtag.tscn")
 
+@export var damage_cooldown_time = 1.0
+var can_damage = true
+
 var dead = false
 
 func _physics_process(delta):
@@ -22,8 +25,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player:
+	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player and can_damage:
 		player.take_damage(damage)
+		can_damage = false
+		await get_tree().create_timer(damage_cooldown_time).timeout
+		can_damage = true
 
 func take_damage(dmg):
 	enemy_health -= dmg
