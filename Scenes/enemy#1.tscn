@@ -45,7 +45,7 @@ position = Vector2(22, -28)
 rotation = 3.14159
 target_position = Vector2(0, 700)
 
-[node name="damage_cooldown_time" type="Timer" parent="."]
+[node name="Cooldown_time" type="Timer" parent="."]
 
 [node name="MuzzleFlash" type="Sprite2D" parent="."]
 visible = false

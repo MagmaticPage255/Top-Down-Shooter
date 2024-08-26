@@ -27,8 +27,10 @@ func _physics_process(delta):
 	
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player and can_damage:
 		player.take_damage(damage)
+		$MuzzleFlash.show()
+		$MuzzleFlash/Timer.start()
 		can_damage = false
-		await get_tree().create_timer(damage_cooldown_time).timeout
+		await get_tree().start_timer(damage_cooldown_time).timeout
 		can_damage = true
 
 func take_damage(dmg):

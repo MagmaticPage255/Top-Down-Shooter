@@ -45,3 +45,7 @@ scale = Vector2(2, 2)
 target_position = Vector2(0, 450)
 
 [node name="damage_cooldown_time" type="Timer" parent="."]
+
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="MuzzleFlash"]
