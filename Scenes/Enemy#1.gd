@@ -1,46 +1,45 @@
 extends CharacterBody2D
 
 @onready var ray_cast_2d = $RayCast2D
-
-@export var SPEED = 200.0
-@export var ACCELERATION = 20.0
-@export var FRICTION = 10.0
 @onready var sprite = $AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
-@export var enemy_health = 10
-@export var damage = 1
+
+@export var SPEED: float = 200.0
+@export var ACCELERATION: float = 20.0
+@export var FRICTION: float = 10.0
+@export var enemy_health: int = 10
+@export var damage: int = 1
+@export var damage_cooldown_time: float = 1.0
+
 const EXPERIENCE_DOGTAG = preload("res://Scenes/xp_dogtag.tscn")
 
-@export var damage_cooldown_time = 1.0
-var can_damage = true
+var can_damage: bool = true
+var dead: bool = false
 
-var dead = false
-
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if dead:
 		return
-	var direction_to_player = global_position.direction_to(player.global_position)
+
+	var direction_to_player: Vector2 = global_position.direction_to(player.global_position)
 	velocity = direction_to_player * SPEED
-	
-	look_at(player.position)
-	rotation_degrees += 90
+	look_at(player.global_position)
+	rotation_degrees += 90  # Adjust rotation if needed
 	move_and_slide()
-	
-	
+
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player and can_damage:
 		player.take_damage(damage)
-		$MuzzleFlash.show()
-		$MuzzleFlash/Timer.start()
+		$MuzzleFlash.visible = true
+		$MuzzleFlash.get_node("Timer").start()
 		can_damage = false
-		await get_tree().start_timer(damage_cooldown_time).timeout
+		await get_tree().create_timer(damage_cooldown_time).timeout
 		can_damage = true
 
-func take_damage(dmg):
+func take_damage(dmg: int) -> void:
 	enemy_health -= dmg
 	if enemy_health <= 0:
 		dead = true
 		queue_free()
 		var new_xp = EXPERIENCE_DOGTAG.instantiate()
 		new_xp.global_position = global_position
-		add_sibling(new_xp)
-	z_index = -1
+		get_parent().add_child(new_xp)
+		z_index = -1
