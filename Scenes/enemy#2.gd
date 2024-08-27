@@ -30,7 +30,7 @@ func _physics_process(delta):
 		$MuzzleFlash.show()
 		$MuzzleFlash/Timer.start()
 		can_damage = false
-		await get_tree().start_timer(damage_cooldown_time).timeout
+		await get_tree().
 		can_damage = true
 
 func take_damage(dmg):

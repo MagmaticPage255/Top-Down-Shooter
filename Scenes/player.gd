@@ -65,9 +65,12 @@ func _on_pickup_area_area_entered(area):
 			
 
 func take_damage(damage):
-	health -= damage
-	if health <= 0:
-		die()
+	if area.is_in_group("Enemy"):
+		health-=1
+		area.die()
+		progress_bar.value = health
+		if health <= 0:
+			get
 
 func die():
 	if dead:

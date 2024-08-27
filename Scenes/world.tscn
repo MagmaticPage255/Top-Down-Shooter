@@ -8,6 +8,10 @@
 
 [node name="Player" parent="." instance=ExtResource("1_j1deh")]
 position = Vector2(657, 352)
+SPEED = null
+ACCELERATION = null
+FRICTION = null
+damage = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -19,6 +23,18 @@ position = Vector2(-1206, -344)
 
 [node name="enemy#2" parent="." instance=ExtResource("3_yk0ga")]
 position = Vector2(-1670, -167)
+SPEED = null
+ACCELERATION = null
+FRICTION = null
+enemy_health = null
+damage = null
+damage_cooldown_time = null
 
 [node name="enemy#3" parent="." instance=ExtResource("3_yk0ga")]
 position = Vector2(-1428, 22)
+SPEED = null
+ACCELERATION = null
+FRICTION = null
+enemy_health = null
+damage = null
+damage_cooldown_time = null

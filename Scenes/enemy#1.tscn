@@ -37,7 +37,7 @@ animation = &"Idle"
 position = Vector2(-7, 8)
 shape = SubResource("CircleShape2D_coxev")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qmyoc")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -55,3 +55,5 @@ texture = ExtResource("4_6g4fx")
 
 [node name="Timer" type="Timer" parent="MuzzleFlash"]
 wait_time = 0.1
+
+[connection signal="timeout" from="Cooldown_time" to="." method="_on_cooldown_time_timeout"]

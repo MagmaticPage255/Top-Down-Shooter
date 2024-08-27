@@ -35,6 +35,8 @@ func _physics_process(delta):
 		await get_tree().start_timer(damage_cooldown_time).timeout
 		can_damage = true
 
+
+
 func take_damage(dmg):
 	enemy_health -= dmg
 	if enemy_health <= 0:
@@ -44,3 +46,7 @@ func take_damage(dmg):
 		new_xp.global_position = global_position
 		add_sibling(new_xp)
 	z_index = -1
+
+
+func _on_cooldown_time_timeout() -> void:
+	pass # Replace with function body.
