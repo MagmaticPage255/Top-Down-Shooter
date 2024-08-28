@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var ACCELERATION = 20.0
 @export var FRICTION = 10.0
 @onready var sprite = $AnimatedSprite2D
+@export var COOLDOWN_TIME: float = 1.0
 @onready var player = get_tree().get_first_node_in_group("player")
 @export var enemy_health = 10
 @export var damage = 1
@@ -29,8 +30,7 @@ func _physics_process(delta):
 		player.take_damage(damage)
 		$MuzzleFlash.show()
 		$MuzzleFlash/Timer.start()
-		can_damage = false
-		await get_tree().
+		$ShootSound.play()
 		can_damage = true
 
 func take_damage(dmg):

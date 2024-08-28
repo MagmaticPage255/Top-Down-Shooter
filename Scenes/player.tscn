@@ -60,10 +60,6 @@ bg_color = Color(0.6, 1, 0.196078, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_falvs")
-SPEED = null
-ACCELERATION = null
-FRICTION = null
-damage = null
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
