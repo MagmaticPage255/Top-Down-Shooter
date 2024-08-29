@@ -9,13 +9,16 @@ extends CharacterBody2D
 @export var FRICTION = 10.0
 @export var damage = 1
 
-var maxPlayerHealth = 25
-var health = 25
+var player_health = 25
+var enemy_health = 20
 
 var dead = false
 
 func _ready():
-	healthBar.set_health_bar(health, maxPlayerHealth)
+	update_health_bars()
+
+func update_health_bars():
+	$UI/Control/Health.value = player_health / 25.0
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -65,10 +68,10 @@ func _on_pickup_area_area_entered(area):
 			
 
 func take_damage(damage):
-	health -= damage
+	player_health -= damage
 	print("Player took damage.")
 	
-	if health <= 0:
+	if player_health <= 0:
 		print("Player died!")
 		die()
 
@@ -78,3 +81,14 @@ func die():
 	dead = true
 	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 	z_index = -1
+
+func attack():
+	var ray_cast = $RayCast2D
+	ray_cast.enabled = true
+	ray_cast.force_raycast_update()
+	
+	if ray_cast.is_colliding():
+		var collider = ray_cast.get_collider()
+		if collider.has_method('take_damage'):
+			collider.take_damage(5)  # Adjust this value as needed
+		ray_cast.enabled = false
