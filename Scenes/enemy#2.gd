@@ -28,10 +28,11 @@ func _physics_process(delta):
 	
 	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player and can_damage:
 		player.take_damage(damage)
+		can_damage = true
 		$MuzzleFlash.show()
 		$MuzzleFlash/Timer.start()
 		$ShootSound.play()
-		can_damage = true
+		can_damage = false
 
 func take_damage(dmg):
 	enemy_health -= dmg
@@ -42,3 +43,17 @@ func take_damage(dmg):
 		new_xp.global_position = global_position
 		add_sibling(new_xp)
 	z_index = -1
+
+
+func _on_cooldown_time_timeout() -> void:
+	pass # Replace with function body.
+
+func attack():
+	var area = $Area2D
+	area.enabled = true
+	
+	# Check for collisions within the area
+	for body in area.get_overlapping_bodies():
+		if body.has_method('take_damage'):
+			body.take_damage(5)  # Adjust this value as needed
+	area.enabled = false
