@@ -67,20 +67,18 @@ func _on_pickup_area_area_entered(area):
 			
 			
 
-func take_damage(damage):
-	player_health -= damage
-	print("Player took damage.")
-	
+func take_damage(amount):
+	player_health -= amount
 	if player_health <= 0:
-		print("Player died!")
 		die()
+	
+
 
 func die():
-	if dead:
-		return
-	dead = true
-	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
-	z_index = -1
+	print("Player died!")
+	# Load the DeathScreen scene
+	var death_screen = preload("res://Scenes/death_screen.tscn").instantiate()
+	get_tree().change_scene_to(death_screen)
 
 func attack():
 	var ray_cast = $RayCast2D

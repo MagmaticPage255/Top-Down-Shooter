@@ -161,15 +161,14 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 581.0
-offset_right = 1112.0
+offset_top = 571.0
+offset_right = 486.0
 offset_bottom = 608.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_pn868")
 theme_override_styles/fill = SubResource("StyleBoxFlat_edwqq")
 max_value = 25.0
-step = 1.0
 script = SubResource("GDScript_a6lib")
 
 [node name="Label" type="Label" parent="UI/Control/Health"]

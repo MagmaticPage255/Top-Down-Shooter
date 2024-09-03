@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b10g83pf6njww"]
+[gd_scene load_steps=8 format=3 uid="uid://b10g83pf6njww"]
 
 [ext_resource type="Script" path="res://Scenes/enemy#2.gd" id="1_dw7pc"]
 [ext_resource type="Texture2D" uid="uid://domj5f20lnw7m" path="res://Enemy/Insurgent 2 Walk.png" id="1_i1uac"]
 [ext_resource type="AudioStream" uid="uid://r2vjmdw3h2wt" path="res://SFX/718175__tb0y298__shotgun-fire-1.wav" id="3_0dbr0"]
+[ext_resource type="Texture2D" uid="uid://re61426di5ik" path="res://Other Assests/MUZZLE FLASH.png" id="4_wun8e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c0yj"]
 atlas = ExtResource("1_i1uac")
@@ -41,13 +42,16 @@ shape = SubResource("CircleShape2D_02b44")
 stream = ExtResource("3_0dbr0")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(22.5, -44)
+position = Vector2(22, -28)
 rotation = 3.14159
-scale = Vector2(2, 2)
-target_position = Vector2(0, 450)
+target_position = Vector2(0, 700)
 
 [node name="damage_cooldown_time" type="Timer" parent="."]
 
 [node name="MuzzleFlash" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(23, -66)
+scale = Vector2(0.042, 0.042)
+texture = ExtResource("4_wun8e")
 
 [node name="Timer" type="Timer" parent="MuzzleFlash"]

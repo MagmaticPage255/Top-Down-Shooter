@@ -26,13 +26,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-	if ray_cast_2d.is_colliding() and ray_cast_2d.get_collider() == player and can_damage:
-		player.take_damage(damage)
-		can_damage = true
-		$MuzzleFlash.show()
-		$MuzzleFlash/Timer.start()
-		$ShootSound.play()
-		can_damage = false
+	if ray_cast_2d.is_colliding():
+		attack()
 
 func take_damage(dmg):
 	enemy_health -= dmg
@@ -49,11 +44,18 @@ func _on_cooldown_time_timeout() -> void:
 	pass # Replace with function body.
 
 func attack():
-	var area = $Area2D
-	area.enabled = true
+	ray_cast_2d.enabled = true
 	
-	# Check for collisions within the area
-	for body in area.get_overlapping_bodies():
-		if body.has_method('take_damage'):
-			body.take_damage(5)  # Adjust this value as needed
-	area.enabled = false
+	# Set raycast direction and position
+	var direction = (get_global_mouse_position() - ray_cast_2d.global_position).normalized()
+	ray_cast_2d.cast_to = direction * 100  # Adjust this value as needed
+	
+	# Perform raycast
+	ray_cast_2d.force_raycast_update()
+	
+	if ray_cast_2d.is_colliding():
+		var result = ray_cast_2d.get_collider()
+		if result and result.has_method('take_damage'):
+			result.take_damage(5)
+	
+	ray_cast_2d.enabled = false
