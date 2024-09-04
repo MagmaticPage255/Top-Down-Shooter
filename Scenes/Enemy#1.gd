@@ -46,13 +46,15 @@ func _on_cooldown_time_timeout() -> void:
 func attack():
 	ray_cast_2d.enabled = true
 	
-	# Set raycast direction and position
-	var direction = (get_global_mouse_position() - ray_cast_2d.global_position).normalized()
-	ray_cast_2d.cast_to = direction * 100  # Adjust this value as needed
+	# Get the mouse position in global coordinates
+	var mouse_pos = get_global_mouse_position()
 	
-	# Perform raycast
-	ray_cast_2d.force_raycast_update()
+	# Convert mouse position to local coordinates of the RayCast2D
+	var local_dir = ray_cast_2d.to_local(mouse_pos - ray_cast_2d.global_position).normalized()
 	
+	# Set the cast_to property using Vector2
+	ray_cast_2d.cast_to = local_dir * 100  # Adjust this value as needed
+
 	if ray_cast_2d.is_colliding():
 		var result = ray_cast_2d.get_collider()
 		if result and result.has_method('take_damage'):
