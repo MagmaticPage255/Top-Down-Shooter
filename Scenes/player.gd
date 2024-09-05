@@ -10,15 +10,17 @@ extends CharacterBody2D
 @export var damage = 1
 
 var player_health = 25
+var max_player_health
+var current_health = max_player_health
 var enemy_health = 20
 
 var dead = false
 
 func _ready():
-	update_health_bars()
-
-func update_health_bars():
-	$UI/Control/Health.value = player_health / 25.0
+	var health_bar = $UI/Control/Health
+	if health_bar:
+		health_bar.max_value = max_player_health
+		health_bar.value = max_player_health
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -69,16 +71,18 @@ func _on_pickup_area_area_entered(area):
 
 func take_damage(amount):
 	player_health -= amount
+	update_health_bar()
+	
 	if player_health <= 0:
 		die()
-	
 
+func update_health_bar():
+	$Label.text = str(current_health) + "/" + str(max_player_health)
 
 func die():
 	print("Player died!")
 	# Load the DeathScreen scene
-	var death_screen = preload("res://Scenes/death_screen.tscn").instantiate()
-	get_tree().change_scene_to(death_screen)
+	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 
 func attack():
 	var ray_cast = $RayCast2D
