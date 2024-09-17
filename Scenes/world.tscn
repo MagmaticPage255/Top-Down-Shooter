@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvt0rd2n1j23y"]
+[gd_scene load_steps=7 format=3 uid="uid://cvt0rd2n1j23y"]
 
 [ext_resource type="PackedScene" uid="uid://bblwvh85j4v0o" path="res://Scenes/player.tscn" id="1_j1deh"]
+[ext_resource type="Texture2D" uid="uid://bjumxk34mbp2c" path="res://Other Assests/DesertTilemap16x16 (1).png" id="1_rpkrg"]
 [ext_resource type="PackedScene" uid="uid://c1mpnx5iebu7s" path="res://Scenes/enemy#1.tscn" id="2_t6lmt"]
 [ext_resource type="PackedScene" uid="uid://b10g83pf6njww" path="res://Scenes/enemy#2.tscn" id="3_yk0ga"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqmxw"]
+texture = ExtResource("1_rpkrg")
+74:120/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_lo6cw"]
+sources/0 = SubResource("TileSetAtlasSource_cqmxw")
 
 [node name="World" type="Node2D"]
 
