@@ -9,18 +9,18 @@ extends CharacterBody2D
 @export var FRICTION = 10.0
 @export var damage = 1
 
-var player_health = 25
-var max_player_health
-var current_health = max_player_health
+var player_health = 100
+var current_health = player_health
+var max_player_health = 125
 var enemy_health = 20
 
 var dead = false
 
 func _ready():
-	var health_bar = $UI/Control/Health
-	if health_bar:
-		health_bar.max_value = max_player_health
-		health_bar.value = max_player_health
+	current_health = 100  # Set to a starting valu
+	max_player_health = 125
+	update_health_bar()
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -70,14 +70,19 @@ func _on_pickup_area_area_entered(area):
 			
 
 func take_damage(amount):
-	player_health -= amount
+	current_health -= amount
+	current_health = clamp(current_health, 0, max_player_health)
 	update_health_bar()
 	
 	if player_health <= 0:
 		die()
 
 func update_health_bar():
-	$Label.text = str(current_health) + "/" + str(max_player_health)
+	var health_percentage = (current_health / max_player_health) * 100
+	$HealthBar.value = health_percentage
+	print("Current Health: ", current_health)
+	print("Max Health: ", max_player_health)
+
 
 func die():
 	print("Player died!")

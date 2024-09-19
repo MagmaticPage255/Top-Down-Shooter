@@ -168,7 +168,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_pn868")
 theme_override_styles/fill = SubResource("StyleBoxFlat_edwqq")
-max_value = 25.0
+max_value = 125.0
 script = SubResource("GDScript_a6lib")
 
 [node name="Label" type="Label" parent="UI/Control/Health"]
