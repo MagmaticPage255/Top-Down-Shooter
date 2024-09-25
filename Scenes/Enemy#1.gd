@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if ray_cast_2d.is_colliding():
 		attack()
 
-func take_damage(dmg):
+func take_damage(dmg): #This is the enemy health script
 	enemy_health -= dmg
 	if enemy_health <= 0:
 		dead = true
@@ -40,17 +40,12 @@ func take_damage(dmg):
 	z_index = -1
 
 
-func _on_cooldown_time_timeout() -> void:
-	pass # Replace with function body.
 
-func attack():	
-	# Get the mouse position in global coordinates
+func attack(): #this is the enemy attack script
 	var mouse_pos = get_global_mouse_position()
 	
-	# Convert mouse position to local coordinates of the RayCast2D
 	var local_dir = ray_cast_2d.to_local(mouse_pos - ray_cast_2d.global_position).normalized()
 	
-	# Set the cast_to property using Vector2
 
 	if ray_cast_2d.is_colliding():
 		var result = ray_cast_2d.get_collider()

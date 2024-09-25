@@ -43,7 +43,7 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	move_and_slide()
 
-func kill():
+func kill(): #the death script
 	if dead:
 		return
 	dead = true
@@ -51,7 +51,7 @@ func kill():
 	z_index = -1
 
 
-func shoot():
+func shoot(): #this is the death script, 
 	if dead:
 		return
 	$MuzzleFlash.show()
