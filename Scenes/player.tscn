@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bblwvh85j4v0o"]
+[gd_scene load_steps=14 format=3 uid="uid://bblwvh85j4v0o"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_falvs"]
 [ext_resource type="Texture2D" uid="uid://1qfl0xnnciia" path="res://Player/RRT Guy.png" id="2_82pix"]
@@ -50,27 +50,6 @@ radius = 88.0227
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alhxn"]
 bg_color = Color(0, 0.6, 0.6, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pn868"]
-bg_color = Color(0.6, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edwqq"]
-bg_color = Color(0.6, 1, 0.196078, 1)
-
-[sub_resource type="GDScript" id="GDScript_a6lib"]
-script/source = "extends ProgressBar
-
-@onready var label = $Label
-
-func set_health_bar(player_health):
-	value = player_health
-	
-	label.text = str(player_health)
-	
-func change_health(newValue):
-	value += newValue
-	label.text = str(value)
-"
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_falvs")
@@ -154,27 +133,6 @@ offset_bottom = 27.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_pmdil")
 theme_override_styles/fill = SubResource("StyleBoxFlat_alhxn")
-
-[node name="Health" type="ProgressBar" parent="UI/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 571.0
-offset_right = 486.0
-offset_bottom = 608.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_pn868")
-theme_override_styles/fill = SubResource("StyleBoxFlat_edwqq")
-max_value = 125.0
-script = SubResource("GDScript_a6lib")
-
-[node name="Label" type="Label" parent="UI/Control/Health"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="timeout" from="MuzzleFlash/Timer" to="MuzzleFlash" method="hide"]
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]

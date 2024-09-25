@@ -19,7 +19,6 @@ var dead = false
 func _ready():
 	current_health = 100  # Set to a starting valu
 	max_player_health = 125
-	update_health_bar()
 
 
 func _process(delta):
@@ -72,16 +71,11 @@ func _on_pickup_area_area_entered(area):
 func take_damage(amount):
 	current_health -= amount
 	current_health = clamp(current_health, 0, max_player_health)
-	update_health_bar()
 	
 	if player_health <= 0:
 		die()
 
-func update_health_bar():
-	var health_percentage = (current_health / max_player_health) * 100
-	$HealthBar.value = health_percentage
-	print("Current Health: ", current_health)
-	print("Max Health: ", max_player_health)
+
 
 
 func die():
